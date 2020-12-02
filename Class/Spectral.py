@@ -105,7 +105,7 @@ class Spectral:
             D = np.diagonal(R)
             Lambda = D / np.abs(D)
             O = np.multiply(O, Lambda)
-            self.phi = np.sqrt(self.m) * O[:, 0:self.n]#Then we take its n first columns, correctly normalized
+            self.phi = np.sqrt(self.m) * O[:, 0:self.n] #Then we take its n first columns, correctly normalized
 
         elif self.ensemble == "hadamard":
             assert self.m >= self.n, "ERROR : For an Hadamard matrix, we need alpha >= 1 !"
@@ -315,7 +315,7 @@ class Spectral:
             self.ev_TAP["Largest"].append(evalues_TAP[self.n-1])
             xLargest = (np.sqrt(self.n)/linalg.norm(evectors_TAP[:,self.n-1]))*evectors_TAP[:,self.n-1]
             self.spectrum["TAP"].append(evalues_TAP)
-        else: #Inverse iterations, as we know that the largest eigenvalue of TAP concentrates on 1
+        else: #Inverse iterations, as we know that the largest eigenvalue of TAP concentrates on 1 in the weak-recovery phase
             MAX_ITERATIONS, epsilon = 1000, 1e-4
             if self.verbosity >= 2:
                 print("Computing the first eigenvalue and eigenvector with inverse iteration...")
